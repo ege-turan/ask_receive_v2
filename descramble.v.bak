@@ -1,0 +1,15 @@
+module descramble(
+	input rclk,
+	input [9:0] scrambled,
+	output [9:0] descrambled);
+
+wire [9:0] descrambled;
+assign descrambled = sr_d[32:23]^sr_d[9:0]^sr_d[13:4]
+
+parameter SEED = 23'b1;
+reg [32:0] sr_d = SEED; 
+
+always @ (posedge rclk) begin
+	sr_d[32:23] <= sr_d[22:13]
+	sr_d[9:0] <= scrambled;
+end
